@@ -11,20 +11,23 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 @ToString(exclude = "planets")
 @EqualsAndHashCode(of = "id")
 public class Ruler {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NonNull
     @Column(name = "name")
     private String name;
 
+    @NonNull
     @Column(name = "age")
-    private int age;
+    private Integer age;
 
-    @OneToMany(mappedBy = "ruler", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ruler", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Planet> planets = new HashSet<>();
 }

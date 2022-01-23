@@ -9,5 +9,4 @@ class UniverseManageSystemApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }
