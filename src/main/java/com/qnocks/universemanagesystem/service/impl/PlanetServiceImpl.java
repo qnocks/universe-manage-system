@@ -2,7 +2,7 @@ package com.qnocks.universemanagesystem.service.impl;
 
 import com.qnocks.universemanagesystem.domain.Planet;
 import com.qnocks.universemanagesystem.dto.PlanetDto;
-import com.qnocks.universemanagesystem.exception.EntityNotFoundException;
+import com.qnocks.universemanagesystem.exception.ResourceNotFoundException;
 import com.qnocks.universemanagesystem.mapper.MapperUtil;
 import com.qnocks.universemanagesystem.repository.PlanetRepository;
 import com.qnocks.universemanagesystem.service.PlanetService;
@@ -39,7 +39,7 @@ public class PlanetServiceImpl implements PlanetService {
     public PlanetDto update(Long id, PlanetDto planetDto) {
         Planet planet = mapper.toEntity(planetDto);
         Planet existingPlanet = planetRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(String.format("Cannot find Planet with id: %d", id)));
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Cannot find Planet with id: %d", id)));
 
         BeanUtils.copyProperties(planet, existingPlanet, "id");
 
