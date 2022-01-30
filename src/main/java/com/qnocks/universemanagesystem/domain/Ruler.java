@@ -13,7 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @ToString(exclude = "planets")
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = {"id", "name", "age"})
 public class Ruler {
 
     @Id
